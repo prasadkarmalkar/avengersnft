@@ -93,6 +93,9 @@ function App() {
         random = generateRandom(21, 24);
       } else if (selectedAvenger == "Black Panther") {
         random = generateRandom(24, 27);
+      }else{
+        alert('Select Your Favourite Avenger')
+        return;
       }
       console.log(random);
       const result = await avengersNFT.safeMint(random);
