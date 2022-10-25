@@ -76,7 +76,7 @@ function App() {
       AVGABI.abi,
       signer
     );
-    setMintingState("started");
+
     try {
       let random = 0;
       if (selectedAvenger == "Iron Man") {
@@ -97,6 +97,7 @@ function App() {
         alert('Select Your Favourite Avenger')
         return;
       }
+      setMintingState("started");
       console.log(random);
       const result = await avengersNFT.safeMint(random);
       setTx(result.hash);
