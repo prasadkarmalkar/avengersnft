@@ -46,6 +46,11 @@ function App() {
 
   const connectWallet = async () => {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const chainid = await provider.getNetwork();
+    if (chainid != 80001) {
+      alert('Change Network To Polygon Testnet Mumbai')
+      return;
+    }
     provider
       .send("eth_requestAccounts", [])
       .then((acc) => {
@@ -93,8 +98,8 @@ function App() {
         random = generateRandom(21, 24);
       } else if (selectedAvenger == "Black Panther") {
         random = generateRandom(24, 27);
-      }else{
-        alert('Select Your Favourite Avenger')
+      } else {
+        alert("Select Your Favourite Avenger");
         return;
       }
       setMintingState("started");
@@ -120,7 +125,7 @@ function App() {
 
   return (
     <div className="">
-      <header className="flex justify-between px-8 mx-10 rounded-full py-2  items-center bg-slate-700 mt-8">
+      <header className="flex flex-wrap justify-center md:justify-between px-8 mx-10 rounded-full py-2  items-center bg-slate-700 mt-8">
         <h1 className="font-bold text-lg flex items-center">
           <img src={logo} className="w-14" />
         </h1>
